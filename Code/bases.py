@@ -1,6 +1,7 @@
 #!python
 
 import string
+import math
 # Hint: Use these string constants to encode/decode hexadecimal digits and more
 # string.digits is '0123456789'
 # string.hexdigits is '0123456789abcdefABCDEF'
@@ -9,6 +10,23 @@ import string
 # string.ascii_letters is ascii_lowercase + ascii_uppercase
 # string.printable is digits + ascii_letters + punctuation + whitespace
 
+hex_dict = {
+    "A": 10,
+    "B": 11,
+    "C": 12,
+    "D": 13,
+    "E": 14,
+    "F": 15,
+    "a": 10,
+    "b": 11,
+    "c": 12,
+    "d": 13,
+    "e": 14,
+    "f": 15,
+}
+
+all_characters =  string.digits + string.ascii_lowercase
+characters = dict(zip(all_characters, range(len(all_characters))))
 
 def decode(digits, base):
     """Decode given digits in given base to number in base 10.
@@ -16,7 +34,26 @@ def decode(digits, base):
     base: int -- base of given number
     return: int -- integer representation of number (in base 10)"""
     # Handle up to base 36 [0-9a-z]
-    assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
+
+#use enumerate
+
+ #vincenzo's solution 
+    # decoded_digit = 0
+    # reversed_digits = digits
+
+    # assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
+    
+    # reversed_digits = reversed_digits[::1]
+    # step = 1
+    # power = 0
+
+    # for curr_digit in reversed_digits:
+    #     decoded_digit += characters[curr_digit.lower()] * (base**power)
+    #     power += step
+    
+    # return decoded_digit
+
+
     # TODO: Decode digits from binary (base 2)
     # ...
     # TODO: Decode digits from hexadecimal (base 16)
@@ -34,13 +71,25 @@ def encode(number, base):
     assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
     # Handle unsigned numbers only for now
     assert number >= 0, 'number is negative: {}'.format(number)
-    # TODO: Encode number in binary (base 2)
-    # ...
-    # TODO: Encode number in hexadecimal (base 16)
-    # ...
-    # TODO: Encode number in any base (2 up to 36)
-    # ...
+    
+    #list to hold converted characters
+    output = []
+    remainder = 0
 
+    while number != 0:
+        remainder = number % base
+
+        #new hex digit derived from characters dict based on remainder
+        hex_digit = characters[str(remainder)]
+
+        #insert hex digit into output list
+        output.insert(0, str(hex_digit))
+        #uses floor property to round number down
+        quotient = number//base
+
+        #sets number to new_value
+        number = quotient
+    return ''.join(output)
 
 def convert(digits, base1, base2):
     """Convert given digits in base1 to digits in base2.
