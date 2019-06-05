@@ -34,33 +34,16 @@ def decode(digits, base):
     base: int -- base of given number
     return: int -- integer representation of number (in base 10)"""
     # Handle up to base 36 [0-9a-z]
+    assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
 
-#use enumerate
+    decoded_digit = 0
+    reversed_digits = digits[::-1]
+    power = 0
 
- #vincenzo's solution 
-    # decoded_digit = 0
-    # reversed_digits = digits
-
-    # assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
-    
-    # reversed_digits = reversed_digits[::1]
-    # step = 1
-    # power = 0
-
-    # for curr_digit in reversed_digits:
-    #     decoded_digit += characters[curr_digit.lower()] * (base**power)
-    #     power += step
-    
-    # return decoded_digit
-
-
-    # TODO: Decode digits from binary (base 2)
-    # ...
-    # TODO: Decode digits from hexadecimal (base 16)
-    # ...
-    # TODO: Decode digits from any base (2 up to 36)
-    # ...
-
+    for curr_digit in reversed_digits:
+        decoded_digit += characters[curr_digit.lower()] * (base**power)
+        power +=1
+    return decoded_digit
 
 def encode(number, base):
     """Encode given number in base 10 to digits in given base.
@@ -78,7 +61,6 @@ def encode(number, base):
 
     while number != 0:
         remainder = number % base
-
         #new hex digit derived from characters dict based on remainder
         hex_digit = characters[str(remainder)]
 
