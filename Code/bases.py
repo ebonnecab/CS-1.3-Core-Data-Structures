@@ -34,6 +34,7 @@ def encode(number, base):
     # Handle unsigned numbers only for now
     assert number >= 0, 'number is negative: {}'.format(number)
     
+    encode_dict = string.digits + string.ascii_lowercase
     #list to hold converted characters
     output = []
 
@@ -42,8 +43,8 @@ def encode(number, base):
         quotient = number//base
         number = quotient
         
-        #new hex digit derived from characters dict based on remainder
-        hex_digit = characters[str(remainder)]
+        #new hex digit
+        hex_digit = encode_dict[remainder]
         #insert hex digit into output list
         output.insert(0, str(hex_digit))
 
@@ -79,3 +80,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+    encode = encode(200, 16)
+    print(encode)
