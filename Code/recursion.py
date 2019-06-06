@@ -15,8 +15,11 @@ def factorial(n):
 def factorial_iterative(n):
     #implement the factorial function iteratively here
     factorial = 1
+
+    #check for base case
     if n == 0 or n == 1:
         return 1
+
     elif n > 1:
         factorial = factorial * n
     return factorial
