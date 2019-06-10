@@ -18,8 +18,20 @@ def is_palindrome(text):
 
 
 def is_palindrome_iterative(text):
-    # TODO: implement the is_palindrome function iteratively here
-    pass
+    #implement the is_palindrome function iteratively here
+
+    #ignore casing, whitespace, punctuation
+    text = text.casefold().replace(" ", "")
+    remove_punct = str.maketrans("","", string.punctuation)
+    text = text.translate(remove_punct)
+
+    #reverse text to see if it is palindrome
+    reversed_text = "".join(reversed(text))
+
+    if text == reversed_text:
+        return True
+    else:
+        return False
     # once implemented, change is_palindrome to call is_palindrome_iterative
     # to verify that your iterative implementation passes all tests
 
