@@ -16,6 +16,10 @@ if __name__ == '__main__':
     text = text.casefold().replace(" ", "")
     remove_punct = str.maketrans("","", string.punctuation)
     text = text.translate(remove_punct)
-    reverse_text = "".join(reversed(text))
+    
+    reverse_text = ""
+
+    for char in text:
+        reverse_text = char + reverse_text
     print(reverse_text)
 

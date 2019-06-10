@@ -26,7 +26,9 @@ def is_palindrome_iterative(text):
     text = text.translate(remove_punct)
 
     #reverse text to see if it is palindrome
-    reversed_text = "".join(reversed(text))
+    reversed_text = ""
+    for char in text:
+        reversed_text = char + reversed_text
 
     if text == reversed_text:
         return True
