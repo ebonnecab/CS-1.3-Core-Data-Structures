@@ -19,17 +19,18 @@ def find_index(text, pattern):
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # TODO: Implement find_index here (iteratively and/or recursively)
     
-    # for index in range(0,len(text)-1):
-    #     if pattern in text: return text.index(pattern)
-
-    index = 0
     for index in range(0,len(text)-1):
-        if text[0] == pattern:
-            return 0
-        elif pattern in text: 
-            return index
-        else:
-            return None
+        if pattern in text: 
+            return text.index(pattern)
+
+    # index = 0
+    # for index in range(0,len(text)-1):
+    #     if text[0] == pattern:
+    #         return 0
+    #     elif pattern in text: 
+    #         return index
+    #     else:
+    #         return None
 
 def find_all_indexes(text, pattern):
     """Return a list of starting indexes of all occurrences of pattern in text,

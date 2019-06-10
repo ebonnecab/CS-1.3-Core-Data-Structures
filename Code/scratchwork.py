@@ -17,12 +17,14 @@ if __name__ == '__main__':
     remove_punct = str.maketrans("","", string.punctuation)
     text = text.translate(remove_punct)
     patt = "b"
-    def get_index(strin, pattern):
-        for index in strin:
-            if pattern in strin: return strin.index(pattern)
+    # def get_index(strin, pattern):
+    #     for index in strin:
+    #         if pattern in strin: return strin.index(pattern)
     # reverse_text = ""
 
+    text_ls = text.split()
+    print(text_ls)
     # for char in text:
     #     reverse_text = char + reverse_text
-    print(get_index(text, patt))
+    # print(get_index(text, patt))
 

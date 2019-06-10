@@ -16,30 +16,56 @@ def is_palindrome(text):
     return is_palindrome_iterative(text)
     # return is_palindrome_recursive(text)
 
-
-def is_palindrome_iterative(text):
-    #implement the is_palindrome function iteratively here
-
+def clean_text(text):
     #ignore casing, whitespace, punctuation
     text = text.casefold().replace(" ", "")
     remove_punct = str.maketrans("","", string.punctuation)
     text = text.translate(remove_punct)
 
-    #reverse text to see if it is palindrome
-    rev_txt = ""
-    for char in text:
-        rev_txt = char + rev_txt
+    return text
 
-    if text == rev_txt:
-        return True
-    else:
-        return False
+def is_palindrome_iterative(text):
+    #implement the is_palindrome function iteratively here
+
+    #ignore casing, whitespace, punctuation
+    text = clean_text(text)
+
+    #simple solution
+    # #reverse text to see if it is palindrome
+    # rev_txt = ""
+    # for char in text:
+    #     rev_txt = char + rev_txt
+
+    # if text == rev_txt:
+    #     return True
+    # else:
+    #     return False
+    
+    #real solution
+    first = 0
+    last = len(text)-1
+
+    while last > first:
+        if text[last] != text[first]:
+            return False
+        first+=1
+        last-= 1
+    return True
    
 
 
 def is_palindrome_recursive(text, left=None, right=None):
     # TODO: implement the is_palindrome function recursively here
     pass
+    text = clean_text(text)
+
+    if left is None and right is None:
+        first = 0
+        last = len(text)-1
+    
+    
+    # #base case
+    # if type(text) is not l
     # once implemented, change is_palindrome to call is_palindrome_recursive
     # to verify that your iterative implementation passes all tests
 
