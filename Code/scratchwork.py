@@ -16,10 +16,13 @@ if __name__ == '__main__':
     text = text.casefold().replace(" ", "")
     remove_punct = str.maketrans("","", string.punctuation)
     text = text.translate(remove_punct)
-    
-    reverse_text = ""
+    patt = "b"
+    def get_index(strin, pattern):
+        for index in strin:
+            if pattern in strin: return strin.index(pattern)
+    # reverse_text = ""
 
-    for char in text:
-        reverse_text = char + reverse_text
-    print(reverse_text)
+    # for char in text:
+    #     reverse_text = char + reverse_text
+    print(get_index(text, patt))
 

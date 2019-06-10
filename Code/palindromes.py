@@ -26,16 +26,15 @@ def is_palindrome_iterative(text):
     text = text.translate(remove_punct)
 
     #reverse text to see if it is palindrome
-    reversed_text = ""
+    rev_txt = ""
     for char in text:
-        reversed_text = char + reversed_text
+        rev_txt = char + rev_txt
 
-    if text == reversed_text:
+    if text == rev_txt:
         return True
     else:
         return False
-    # once implemented, change is_palindrome to call is_palindrome_iterative
-    # to verify that your iterative implementation passes all tests
+   
 
 
 def is_palindrome_recursive(text, left=None, right=None):
