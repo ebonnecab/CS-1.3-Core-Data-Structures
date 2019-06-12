@@ -5,12 +5,26 @@ def contains(text, pattern):
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # TODO: Implement contains here (iteratively and/or recursively)
-
-    if pattern in text:
+    
+    if pattern == "":
         return True
-    else:
-        return False
 
+
+    for index, letter in enumerate(text):
+        if letter == pattern[0]:
+            if text[index: index + len(pattern)] == pattern:
+                return True
+            else:
+                continue
+    return False
+  
+   #super simple solution
+    # if pattern in text:
+    #     return True
+    # else:
+    #     return False
+
+    
 
 def find_index(text, pattern):
     """Return the starting index of the first occurrence of pattern in text,
@@ -18,27 +32,36 @@ def find_index(text, pattern):
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # TODO: Implement find_index here (iteratively and/or recursively)
-    
-    for index in range(0,len(text)-1):
-        if pattern in text: 
-            return text.index(pattern)
 
-    # index = 0
-    # for index in range(0,len(text)-1):
-    #     if text[0] == pattern:
-    #         return 0
-    #     elif pattern in text: 
-    #         return index
-    #     else:
-    #         return None
+    
+    if pattern  == "":
+        return 0
+
+    for index, letter in enumerate(text):
+        if letter == pattern[0]:
+            if text[index: index + len(pattern)]:
+                return index
+            else: continue
+    return index
+    
+    
 
 def find_all_indexes(text, pattern):
     """Return a list of starting indexes of all occurrences of pattern in text,
     or an empty list if not found."""
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
-    # TODO: Implement find_all_indexes here (iteratively and/or recursively)
 
+    index_lst = []
+    
+    if pattern = "":
+        return index_lst
+
+    for index, letter in enumerate(text):
+        index = find_index(text, pattern)
+        index_lst.append(index)
+    
+    return index_lst
 
 def test_string_algorithms(text, pattern):
     found = contains(text, pattern)

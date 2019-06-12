@@ -26,7 +26,7 @@ def clean_text(text):
 
 def is_palindrome_iterative(text):
     #implement the is_palindrome function iteratively here
-    '''Runtime is O(n)'''
+    '''Runtime is O(n) because....(fill out later)'''
     #ignore casing, whitespace, punctuation
     text = clean_text(text)
     
@@ -41,11 +41,12 @@ def is_palindrome_iterative(text):
         last-= 1
     return True
    
+    
 
 
 def is_palindrome_recursive(text, left=None, right=None):
-    # TODO: implement the is_palindrome function recursively here
-    pass
+    #implement the is_palindrome function recursively here
+    
     text = clean_text(text)
 
     if text == "":
