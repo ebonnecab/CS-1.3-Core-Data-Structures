@@ -39,10 +39,10 @@ def find_index(text, pattern):
 
     for index, letter in enumerate(text):
         if letter == pattern[0]:
-            if text[index: index + len(pattern)]:
+            if text[index: index + len(pattern)] == pattern:
                 return index
             else: continue
-    return index
+    return None
     
     
 
@@ -54,13 +54,15 @@ def find_all_indexes(text, pattern):
 
     index_lst = []
     
-    if pattern = "":
+    if pattern == "":
         return index_lst
 
     for index, letter in enumerate(text):
-        index = find_index(text, pattern)
-        index_lst.append(index)
-    
+        if letter == pattern[0]:
+            if text[index: index + len(pattern)] == pattern:
+                index_lst.append(index)
+            else: continue
+
     return index_lst
 
 def test_string_algorithms(text, pattern):

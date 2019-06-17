@@ -104,6 +104,7 @@ class LinkedList(object):
             self.tail.next = new_node
         # Update tail to new node regardless
         self.tail = new_node
+        self.size +=1
 
     def prepend(self, item):
         """Insert the given item at the head of this linked list.
@@ -119,6 +120,7 @@ class LinkedList(object):
             new_node.next = self.head
         # Update head to new node regardless
         self.head = new_node
+        self.size +=1
 
     def find(self, quality):
         """Return an item from this linked list satisfying the given quality.
@@ -189,6 +191,7 @@ class LinkedList(object):
                     previous.next = None
                 # Update tail to the previous node regardless
                 self.tail = previous
+            self.size -= 1
         else:
             # Otherwise raise an error to tell the user that delete has failed
             raise ValueError('Item not found: {}'.format(item))
