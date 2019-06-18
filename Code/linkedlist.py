@@ -6,6 +6,7 @@ class Node(object):
         """Initialize this node with the given data."""
         self.data = data
         self.next = None
+        self.prev = None
 
     def __repr__(self):
         """Return a string representation of this node."""
@@ -18,7 +19,6 @@ class LinkedList(object):
         """Initialize this linked list and append the given items, if any."""
         self.head = None  # First node
         self.tail = None  # Last node
-        self.prev = None
         self.size = 0  # Number of nodes
         # Append the given items
         if iterable is not None:
@@ -104,13 +104,15 @@ class LinkedList(object):
         # Check if the given index is out of range and if so raise an error
         if not (0 <= index <= self.size):
             raise ValueError('List index out of range: {}'.format(index))
+        #Find the node before the given index and insert item after it
         while curr_node:
             if index == count:
                 curr_node.prev = prev_node
                 prev_node.next = new_node
+
             curr_node = curr_node.next
             count +=1
-        # TODO: Find the node before the given index and insert item after it
+        
 
     def append(self, item):
         """Insert the given item at the tail of this linked list.
@@ -168,7 +170,18 @@ class LinkedList(object):
         Best case running time: ??? under what conditions? [TODO]
         Worst case running time: ??? under what conditions? [TODO]"""
         # TODO: Find the node containing the given old_item and replace its
-        # data with new_item, without creating a new node object
+        found = False
+        curr_node = self.head
+        prev_node = curr_node.prev
+        
+        while curr_node:
+            if curr_node.data == old_item:
+                found = True
+                curr_node.data = new_item
+            if prev_node == self.tail and not found:
+                raise ValueError('Item not found: {}'.format(old_item))
+            curr_node = curr_node.next
+        # # data with new_item, without creating a new node object
         pass
 
     def delete(self, item):
