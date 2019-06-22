@@ -1,5 +1,5 @@
 #!python
-
+# TO-DO: add comments to explain my code better
 import string
 import math
 

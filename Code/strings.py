@@ -53,13 +53,18 @@ def find_all_indexes(text, pattern):
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
 
     index_lst = []
+    count = 0
+
+    if pattern == "":
+        while count <= len(text)-1:
+            index_lst.append(count)
+            count+=1
+        return index_lst
 
     # if pattern == "":
     #     return index_lst
 
     for index, letter in enumerate(text):
-        if pattern == "":
-            return index_lst
         if letter == pattern[0]:
             if text[index: index + len(pattern)] == pattern:
                 index_lst.append(index)

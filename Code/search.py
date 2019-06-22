@@ -76,8 +76,8 @@ def binary_search_recursive(array, item, left=None, right=None):
     midpoint = (left + right) // 2
 
     if array[midpoint] > item:
-        right = midpoint -1
-        return binary_search_recursive(array, item,left, right)
+        right = midpoint-1
+        return binary_search_recursive(array, item, left, right)
     elif array[midpoint] < item:
         left = midpoint+1
         return binary_search_recursive(array, item, left, right)
