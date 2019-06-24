@@ -28,7 +28,8 @@ def is_palindrome_iterative(text):
     #implement the is_palindrome function iteratively here
     '''Runtime is O(n) because....(fill out later)'''
     #ignore casing, whitespace, punctuation
-    text = clean_text(text)
+    if text:
+        text = clean_text(text)
     
     #better solution
     first = 0
