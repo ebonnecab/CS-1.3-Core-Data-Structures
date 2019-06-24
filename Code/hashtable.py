@@ -152,21 +152,15 @@ class HashTable(object):
         # Option to reduce size if buckets are sparsely filled (low load factor)
         elif new_size is 0:
             new_size = len(self.buckets) / 2  # Half size
-        # TODO: Get a list to temporarily hold all current key-value entries
+        #Get a list to temporarily hold all current key-value entries
         entries = self.items()
-        new_list = list()
-
-        for _ in range(new_size):
-            new_list.append(LinkedList())
-        self.buckets = new_list
+        #Create a new list of new_size total empty linked list buckets
+        self.__init__(new_size)
         self.size = 0
-        
+        #Insert each key-value entry into the new list of buckets,
+        # which will rehash them into a new bucket index based on the new size
         for key, val in entries:
             self.set(key,val)
-        # TODO: Create a new list of new_size total empty linked list buckets
-        # TODO: Insert each key-value entry into the new list of buckets,
-        # which will rehash them into a new bucket index based on the new size
-        # ...
 
 
 def test_hash_table():
