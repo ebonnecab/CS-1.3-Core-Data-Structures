@@ -1,5 +1,5 @@
 #!python
-
+import math
 
 class BinaryTreeNode(object):
 
@@ -27,14 +27,21 @@ class BinaryTreeNode(object):
         """Return the height of this node (the number of edges on the longest
         downward path from this node to a descendant leaf node).
         TODO: Best and worst case running time: ??? under what conditions?"""
-        height = 0
+        l_height = 0
+        r_height = 0
         if self.is_leaf():
             return 0
         else:
-            lh = self.height(self.left)
-            rh = self.height(self.right)
-
-            return 1 + max(lh, rh)
+            while self.left is not None:
+                l_height+=1
+                self = self.left
+            return l_height
+            while self.right is not None:
+                r_height+=1
+                self = self.right
+            return r_height
+        return 1 + max(l_height, r_height)
+            
                 
         #Check if left child has a value and if so calculate its height
         # if not self.is_leaf():
@@ -89,7 +96,7 @@ class BinarySearchTree(object):
         # Find a node with the given item, if any
         node = self._find_node_recursive(item, self.root)
         # TODO: Return the node's data if found, or None
-        return node.data if ... else None
+        return node.data if node is not None else None
 
     def insert(self, item):
         """Insert the given item in order into this binary search tree.
