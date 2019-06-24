@@ -103,24 +103,29 @@ class BinarySearchTree(object):
         TODO: Best case running time: ??? under what conditions?
         TODO: Worst case running time: ??? under what conditions?"""
         # Handle the case where the tree is empty
-        # if self.is_empty():
+        node = self.root
+        if node is None:
         #     # TODO: Create a new root node
-        #     self.root = ...
+            node = BinaryTreeNode(item)
         #     # TODO: Increase the tree size
-        #     self.size ...
-        #     return
+            self.size = 1
+            return node
         # # Find the parent node of where the given item should be inserted
-        # parent = self._find_parent_node_recursive(item, self.root)
+        parent = self._find_parent_node_recursive(item, self.root)
         # # TODO: Check if the given item should be inserted left of parent node
-        # if ...:
+        if parent.data > item:
+            if parent.left is None:
         #     # TODO: Create a new node and set the parent's left child
-        #     parent.left = ...
+                parent.left = node
+            else:
+                insert(parent.left, node)
         # # TODO: Check if the given item should be inserted right of parent node
-        # elif ...:
+        else:
         #     # TODO: Create a new node and set the parent's right child
-        #     parent.right = ...
+            if parent.right is not None:
+                parent.right = node
         # # TODO: Increase the tree size
-        # self.size ...
+        self.size+=1
 
     def _find_node_iterative(self, item):
         """Return the node containing the given item in this binary search tree,
@@ -133,17 +138,17 @@ class BinarySearchTree(object):
         # Loop until we descend past the closest leaf node
         while node is not None:
             # TODO: Check if the given item matches the node's data
-            if ...:
+            if node.data == item:
                 # Return the found node
                 return node
             # TODO: Check if the given item is less than the node's data
-            elif ...:
+            elif item < node.data:
                 # TODO: Descend to the node's left child
-                node = ...
+                node = node.left
             # TODO: Check if the given item is greater than the node's data
-            elif ...:
+            elif item > node.data:
                 # TODO: Descend to the node's right child
-                node = ...
+                node = node.right
         # Not found
         return None
 

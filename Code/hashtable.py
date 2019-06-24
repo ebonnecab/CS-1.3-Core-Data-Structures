@@ -118,7 +118,8 @@ class HashTable(object):
         bucket.append((key, value))
         self.size+=1
         # TODO: Check if the load factor exceeds a threshold such as 0.75
-        if self.load_factor() > 75:
+        if self.load_factor() > .75:
+            self._resize()
     
         # TODO: If so, automatically resize to reduce the load factor
         # ...
@@ -152,7 +153,16 @@ class HashTable(object):
         elif new_size is 0:
             new_size = len(self.buckets) / 2  # Half size
         # TODO: Get a list to temporarily hold all current key-value entries
-        temp_list = list(self.items())
+        entries = self.items()
+        new_list = list()
+
+        for _ in range(new_size):
+            new_list.append(LinkedList())
+        self.buckets = new_list
+        self.size = 0
+        
+        for key, val in entries:
+            self.set(key,val)
         # TODO: Create a new list of new_size total empty linked list buckets
         # TODO: Insert each key-value entry into the new list of buckets,
         # which will rehash them into a new bucket index based on the new size
