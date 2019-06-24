@@ -119,7 +119,7 @@ class HashTable(object):
         self.size+=1
         # TODO: Check if the load factor exceeds a threshold such as 0.75
         if self.load_factor() > 75:
-
+    
         # TODO: If so, automatically resize to reduce the load factor
         # ...
 
