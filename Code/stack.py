@@ -30,22 +30,22 @@ class LinkedStack(object):
     def push(self, item):
         """Insert the given item on the top of this stack.
         Running time: O(???) – Why? [TODO]"""
-        self.list.append(item)
+        self.list.prepend(item)
 
     def peek(self):
         """Return the item on the top of this stack without removing it,
         or None if this stack is empty."""
         if not self.is_empty():
-            return self.list.tail.data
+            return self.list.head.data
 
     def pop(self):
         """Remove and return the item on the top of this stack,
         or raise ValueError if this stack is empty.
         Running time: O(???) – Why? [TODO]"""
-        tail_node = self.list.tail
+        head_node = self.list.head
         if not self.is_empty():
-            self.list.delete(self.list.tail.data)
-            return tail_node.data
+            self.list.delete(self.list.head.data)
+            return head_node.data
         else:
             raise ValueError('Stack is Empty')
 
