@@ -102,22 +102,27 @@ class HashTable(object):
 
     def set(self, key, value):
         """Insert or update the given key with its associated value.
-        Best case running time: ??? under what conditions? [TODO]
-        Worst case running time: ??? under what conditions? [TODO]"""
+        Best case running time: O(1) if there are no other items in bucket
+        Worst case running time: O(l) to search through bucket"""
+
         # Find the bucket the given key belongs in
         index = self._bucket_index(key)
         bucket = self.buckets[index]
+
         # Find the entry with the given key in that bucket, if one exists
         # Check if an entry with the given key exists in that bucket
         entry = bucket.find(lambda key_value: key_value[0] == key)
+
         if entry is not None:  # Found
             # In this case, the given key's value is being updated
             # Remove the old key-value entry from the bucket first
             bucket.delete(entry)
             self.size-=1
+
         # Insert the new key-value entry into the bucket in either case
         bucket.append((key, value))
         self.size+=1
+
         #Check if the load factor exceeds a threshold such as 0.75
         # If so, automatically resize to reduce the load factor
         if self.load_factor() > .75:
@@ -128,9 +133,11 @@ class HashTable(object):
         """Delete the given key and its associated value, or raise KeyError.
         Best case running time: ??? under what conditions? [TODO]
         Worst case running time: ??? under what conditions? [TODO]"""
+
         # Find the bucket the given key belongs in
         index = self._bucket_index(key)
         bucket = self.buckets[index]
+
         # Find the entry with the given key in that bucket, if one exists
         entry = bucket.find(lambda key_value: key_value[0] == key)
         if entry is not None:  # Found
@@ -144,23 +151,30 @@ class HashTable(object):
         """Resize this hash table's buckets and rehash all key-value entries.
         Should be called automatically when load factor exceeds a threshold
         such as 0.75 after an insertion (when set is called with a new key).
-        Best and worst case running time: ??? under what conditions? [TODO]
+        Best and worst case running time: O(n) + O(b) = O(n) because O(b) is always 2(n)
+        in this case due to load factor
         Best and worst case space usage: ??? what uses this memory? [TODO]"""
+
         # If unspecified, choose new size dynamically based on current size
         if new_size is None:
             new_size = len(self.buckets) * 2  # Double size
+
         # Option to reduce size if buckets are sparsely filled (low load factor)
         elif new_size is 0:
             new_size = len(self.buckets) / 2  # Half size
+
         #Get a list to temporarily hold all current key-value entries
-        entries = self.items()
+        temp_entries = self.items() #O(b) *(l = n/b) => O(n) to loop through
+
         #Create a new list of new_size total empty linked list buckets
-        self.__init__(new_size)
+        self.__init__(new_size) # 2b => O(b) for number of new buckets
         self.size = 0
+
         #Insert each key-value entry into the new list of buckets,
         # which will rehash them into a new bucket index based on the new size
-        for key, val in entries:
-            self.set(key,val)
+        for key, val in entries: #O(n) * (l = n/b) = O(b)
+            self.set(key,val) #O(l) where l is length of bucket
+
 
 
 def test_hash_table():
