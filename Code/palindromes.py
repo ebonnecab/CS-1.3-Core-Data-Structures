@@ -30,7 +30,8 @@ def is_palindrome_iterative(text):
     #ignore casing, whitespace, punctuation
     if text:
         text = clean_text(text)
-    
+    else:
+        raise Exception('empty string')
     #better solution
     first = 0
     last = len(text)-1
@@ -47,15 +48,16 @@ def is_palindrome_iterative(text):
 
 def is_palindrome_recursive(text, left=None, right=None):
     #implement the is_palindrome function recursively here
-    
-    text = clean_text(text)
-
-    if text == "":
-        return True
 
     if left is None and right is None:
         left = 0
         right = len(text)-1
+    
+
+    if text == "":
+        return True
+    
+    text = clean_text(text)
 
     if left > right:
         return True

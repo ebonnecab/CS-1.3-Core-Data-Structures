@@ -178,7 +178,7 @@ class LinkedList(object):
             if curr_node.data == old_item:
                 found = True
                 curr_node.data = new_item
-            if prev_node == self.tail and not found:
+            if curr_node == self.tail and not found:
                 raise ValueError('Item not found: {}'.format(old_item))
             curr_node = curr_node.next
         # # data with new_item, without creating a new node object
