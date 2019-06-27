@@ -9,23 +9,12 @@ def contains(text, pattern):
     if pattern == "":
         return True
 
+    get_indexes = find_all_indexes(text, pattern)
 
-    for index, letter in enumerate(text):
-        if letter == pattern[0]:
-            if text[index: index + len(pattern)] == pattern:
-                return True
-            else:
-                continue
+    if get_indexes:
+        return True
     return False
   
-   #super simple solution
-    # if pattern in text:
-    #     return True
-    # else:
-    #     return False
-
-    
-
 def find_index(text, pattern):
     """Return the starting index of the first occurrence of pattern in text,
     or None if not found."""
@@ -37,11 +26,11 @@ def find_index(text, pattern):
     if pattern  == "":
         return 0
 
-    for index, letter in enumerate(text):
-        if letter == pattern[0]:
-            if text[index: index + len(pattern)] == pattern:
-                return index
-            else: continue
+    get_indexes = find_all_indexes(text, pattern)
+
+    if get_indexes:
+        return get_indexes[0]
+
     return None
     
     
