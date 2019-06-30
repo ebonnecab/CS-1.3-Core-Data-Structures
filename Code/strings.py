@@ -50,9 +50,6 @@ def find_all_indexes(text, pattern):
             count+=1
         return index_lst
 
-    # if pattern == "":
-    #     return index_lst
-
     for index, letter in enumerate(text): #O(n)
         if letter == pattern[0]:
             if text[index: index + len(pattern)] == pattern:
