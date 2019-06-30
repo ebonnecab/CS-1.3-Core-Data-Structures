@@ -4,14 +4,14 @@ def contains(text, pattern):
     """Return a boolean indicating whether pattern occurs in text."""
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
-    # TODO: Implement contains here (iteratively and/or recursively)
+    #Runtime of O(n*2) due to get_indexes
     
-    if pattern == "":
+    if pattern == "": #O(1)
         return True
 
-    get_indexes = find_all_indexes(text, pattern)
+    get_indexes = find_all_indexes(text, pattern) #O(n)
 
-    if get_indexes:
+    if get_indexes: #O(1)
         return True
     return False
   
@@ -20,16 +20,16 @@ def find_index(text, pattern):
     or None if not found."""
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
-    # TODO: Implement find_index here (iteratively and/or recursively)
+    #O(n *2) due to get_indexes
 
     
-    if pattern  == "":
+    if pattern  == "": #O(1)
         return 0
 
-    get_indexes = find_all_indexes(text, pattern)
+    get_indexes = find_all_indexes(text, pattern) #O(n)
 
-    if get_indexes:
-        return get_indexes[0]
+    if get_indexes: #O(1)
+            return get_indexes[0]
 
     return None
     
@@ -41,11 +41,11 @@ def find_all_indexes(text, pattern):
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
 
-    index_lst = []
-    count = 0
+    index_lst = [] #O(1)
+    count = 0 #O(1)
 
     if pattern == "":
-        while count <= len(text)-1:
+        while count <= len(text)-1: #O(n)
             index_lst.append(count)
             count+=1
         return index_lst
@@ -53,13 +53,13 @@ def find_all_indexes(text, pattern):
     # if pattern == "":
     #     return index_lst
 
-    for index, letter in enumerate(text):
+    for index, letter in enumerate(text): #O(n)
         if letter == pattern[0]:
             if text[index: index + len(pattern)] == pattern:
                 index_lst.append(index)
             else: continue
 
-    return index_lst
+    return index_lst #0(1)
 
 def test_string_algorithms(text, pattern):
     found = contains(text, pattern)
