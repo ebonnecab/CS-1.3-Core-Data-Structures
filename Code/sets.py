@@ -41,8 +41,12 @@ class SetSet:
 
                 
     
-    def __difference__(other_set):
-        pass
+    def __difference__(self, other_set):
+        for element in self.elements:
+            if element in other_set.elements:
+                other_set.__remove__(element)
+        
+        return other_set
     
     def __is_subset__(other_set):
         pass

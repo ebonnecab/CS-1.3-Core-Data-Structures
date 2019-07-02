@@ -82,6 +82,17 @@ class SetSetTest(unittest.TestCase):
         assert set_set2.__contains__('E')
         assert set_set2.size == 1
 
+    def test_difference(self):
+        set_one = SetSet(['A','B', 'Z'])
+        set_two = SetSet(['C', 'A', 'E', 'B', 'F', 'R'])
+        set_set = set_one.__difference__(set_two)
+        assert set_set.__contains__('R')
+        assert set_set.elements == ['C', 'E', 'F', 'R']
+        set_1 = SetSet([1,2,4,100])
+        set_2 = SetSet([1,2,4,25,100])
+        set_set2 = set_1.__difference__(set_2)
+        assert set_set2.__contains__(25)
+        assert set_set2.elements == [25] 
 
 if __name__ == '__main__':
     unittest.main()
