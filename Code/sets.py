@@ -6,18 +6,18 @@ class SetSet:
         
         if elements is not None:
             for element in elements:
-                self.add(element)
+                self.__add__(element)
     
     def __contains__(self, element):
         return True if element in self.elements else False
     
     def __add__(self, element):
-        if not self.contains(element):
+        if not self.__contains__(element):
             self.elements.append(element)
             self.size += 1
 
     def __remove__(self, element):
-        if self.contains(element):
+        if self.__contains__(element):
             self.elements.remove(element)
             self.size -= 1
         else:
