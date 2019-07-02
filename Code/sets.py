@@ -22,6 +22,17 @@ class SetSet:
             self.size -= 1
         else:
             raise KeyError('element not found')
+
+    def __union__(other_set):
+        pass
     
+    def __intersection__(other_set):
+        pass
+    
+    def __difference__(other_set):
+        pass
+    
+    def __is_subset__(other_set):
+        pass
     
 
