@@ -94,5 +94,17 @@ class SetSetTest(unittest.TestCase):
         assert set_set2.__contains__(25)
         assert set_set2.elements == [25] 
 
+    def test_subset(self):
+        set_one = SetSet([1,3,5,6,10,5,200,95])
+        set_two = SetSet([3,5])
+        set_set = set_one.__is_subset__(set_two)
+        assert set_set is True
+        set_three = SetSet([200,5,9])
+        set_set2 = set_one.__is_subset__(set_three)
+        assert set_set2 is True
+        
+
+
+
 if __name__ == '__main__':
     unittest.main()

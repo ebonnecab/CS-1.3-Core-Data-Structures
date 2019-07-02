@@ -48,7 +48,11 @@ class SetSet:
         
         return other_set
     
-    def __is_subset__(other_set):
-        pass
-    
+    def __is_subset__(self, other_set):
+        subset = []
+        for element in self.elements:
+            for element in other_set.elements:
+                if other_set.__contains__(element):
+                    return  True
+        return False
 
