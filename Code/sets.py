@@ -23,8 +23,12 @@ class SetSet:
         else:
             raise KeyError('element not found')
 
-    def __union__(other_set):
-        pass
+    def __union__(self, other_set):
+        for element in other_set.elements:
+            if element not in self.elements:
+                self.__add__(element)
+        
+        return self
     
     def __intersection__(other_set):
         pass

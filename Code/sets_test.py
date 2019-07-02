@@ -57,6 +57,18 @@ class SetSetTest(unittest.TestCase):
         array_set.__remove__(3)
         assert not array_set.__contains__(3)
         assert array_set.size == 0
-        
+
+    def test_union(self):
+        set_one = SetSet([1,100,2,45])
+        assert set_one.size == 4
+        set_two = SetSet([20,4,3])
+        set_one.__union__(set_two)
+        assert set_one.size == 7
+        assert set_one.__contains__(4)
+        set_three = SetSet([5,2,25,1,122])
+        set_one.__union__(set_three)
+        assert set_one.size == 10
+        assert set_three.__contains__(2)
+
 if __name__ == '__main__':
     unittest.main()
