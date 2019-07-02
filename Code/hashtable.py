@@ -172,7 +172,7 @@ class HashTable(object):
 
         #Insert each key-value entry into the new list of buckets,
         # which will rehash them into a new bucket index based on the new size
-        for key, val in entries: #O(n) * (l = n/b) = O(b)
+        for key, val in temp_entries: #O(n) * (l = n/b) = O(b)
             self.set(key,val) #O(l) where l is length of bucket
 
 
