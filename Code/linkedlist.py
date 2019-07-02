@@ -124,7 +124,7 @@ class LinkedList(object):
 
     def append(self, item):
         """Insert the given item at the tail of this linked list.
-        Best case is O(1) for empty LL, worst case is O(n) where n represents nodes """
+        Best case is O(1) for empty LL, worst case is O(1) to access tail """
         # Create a new node to hold the given item
         new_node = Node(item)
         # Check if this linked list is empty

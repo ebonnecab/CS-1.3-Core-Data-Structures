@@ -29,7 +29,7 @@ class LinkedQueue(object):
 
     def enqueue(self, item):
         """Insert the given item at the back of this queue.
-        Running time: O(???) – Why? [TODO]"""
+        Running time: O(1) due to ll tail property [TODO]"""
         self.list.append(item)
         
 
@@ -42,7 +42,7 @@ class LinkedQueue(object):
     def dequeue(self):
         """Remove and return the item at the front of this queue,
         or raise ValueError if this queue is empty.
-        Running time: O(???) – Why? [TODO]"""
+        Running time: O(1) to access head of LL"""
         node = self.list.head
         if not self.list.is_empty():
             self.list.delete(node.data)
@@ -81,7 +81,7 @@ class ArrayQueue(object):
 
     def enqueue(self, item):
         """Insert the given item at the back of this queue.
-        Running time: O(???) – Why? [TODO]"""
+        Running time: O(n) where n represents items in list [TODO]"""
         self.list.append(item)
 
     def front(self):
@@ -96,7 +96,7 @@ class ArrayQueue(object):
     def dequeue(self):
         """Remove and return the item at the front of this queue,
         or raise ValueError if this queue is empty.
-        Running time: O(???) – Why? [TODO]"""
+        Running time: O(1) b/c pop is constant runtime [TODO]"""
         #Remove and return front item, if any
         if not self.is_empty():
             return self.list.pop(0)
