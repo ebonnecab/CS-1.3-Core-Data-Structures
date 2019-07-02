@@ -64,7 +64,7 @@ class BinarySearchTree(object):
     def height(self):
         """Return the height of this tree (the number of edges on the longest
         downward path from this tree's root node to a descendant leaf node).
-        TODO: Best and worst case running time: ??? under what conditions?"""
+        Best and worst case running time: O(n) due to nodes height method"""
         #Check if root node has a value and if so calculate its height
         if self.root is not None:
             self.root.height()
@@ -90,8 +90,8 @@ class BinarySearchTree(object):
 
     def insert(self, item):
         """Insert the given item in order into this binary search tree.
-        TODO: Best case running time: ??? under what conditions?
-        TODO: Worst case running time: ??? under what conditions?"""
+        Best case running time: O(1) if tree is empty
+        Worst case running time: O(n) where n is # of nodes"""
         # Handle the case where the tree is empty
         if self.is_empty():
         #Create a new root node and increase size
