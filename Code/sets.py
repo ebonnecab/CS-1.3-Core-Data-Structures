@@ -30,8 +30,16 @@ class SetSet:
         
         return self
     
-    def __intersection__(other_set):
-        pass
+    def __intersection__(self,other_set):
+        new_array = []
+        for element in self.elements:
+            for element in other_set.elements:
+                if element in self.elements and element in other_set.elements:
+                    new_array.append(element)
+        
+        return new_array
+
+                
     
     def __difference__(other_set):
         pass
