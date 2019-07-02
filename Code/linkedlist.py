@@ -124,7 +124,7 @@ class LinkedList(object):
 
     def append(self, item):
         """Insert the given item at the tail of this linked list.
-        Best and worst case running time: ??? under what conditions? [TODO]"""
+        Best case is O(1) for empty LL, worst case is O(n) where n represents nodes """
         # Create a new node to hold the given item
         new_node = Node(item)
         # Check if this linked list is empty
@@ -140,7 +140,7 @@ class LinkedList(object):
 
     def prepend(self, item):
         """Insert the given item at the head of this linked list.
-        Best and worst case running time: ??? under what conditions? [TODO]"""
+        Best and worst case running time: O(1) because you only need to access head"""
         # Create a new node to hold the given item
         new_node = Node(item)
         # Check if this linked list is empty
@@ -175,9 +175,9 @@ class LinkedList(object):
     def replace(self, old_item, new_item):
         """Replace the given old_item in this linked list with given new_item
         using the same node, or raise ValueError if old_item is not found.
-        Best case running time: ??? under what conditions? [TODO]
-        Worst case running time: ??? under what conditions? [TODO]"""
-        # TODO: Find the node containing the given old_item and replace its
+        Best case running time: O(1) if item is found at head
+        Worst case running time: O(n) if you have to loop through all the nodes """
+        #Find the node containing the given old_item and replace its
         found = False
         curr_node = self.head        
         while curr_node:
@@ -190,8 +190,8 @@ class LinkedList(object):
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
-        Best case running time: ??? under what conditions? [TODO]
-        Worst case running time: ??? under what conditions? [TODO]"""
+        Best case running time: O(1) if item is found at head
+        Worst case running time: O(n) if you have to loop through all the nodes"""
         # Start at the head node
         node = self.head
         # Keep track of the node before the one containing the given item
