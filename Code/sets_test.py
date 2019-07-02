@@ -22,5 +22,16 @@ class SetSetTest(unittest.TestCase):
         array_set.__remove__(3)
         assert array_set.size == 1
 
+    def test_add(self):
+        array_set = SetSet()
+        array_set.__add__(2)
+        assert array_set.size == 1
+        assert array_set.__contains__(2)
+        array_set.__add__('E')
+        assert array_set.size == 2
+        assert array_set.__contains__('E')
+        array_set.__add__(3)
+        assert array_set.size == 3
+        assert array_set.__contains__(3)
 if __name__ == '__main__':
     unittest.main()
