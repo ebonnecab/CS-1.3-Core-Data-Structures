@@ -33,5 +33,14 @@ class SetSetTest(unittest.TestCase):
         array_set.__add__(3)
         assert array_set.size == 3
         assert array_set.__contains__(3)
+
+    def test_contains(self):
+        array_set = SetSet()
+        array_set.__add__('E')
+        assert array_set.__contains__('E')
+        array_set.__add__('F')
+        assert array_set.__contains__('F')
+        array_set.__remove__('E')
+        assert not array_set.__contains__('E')
 if __name__ == '__main__':
     unittest.main()
